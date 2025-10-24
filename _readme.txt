@@ -11,4 +11,10 @@ The metadata categories I selected were selected to prioritize the diplomatic an
 
 Clean and Extract Text
 
-For my text extraction process, I used Tesseract's command line interface to analyze all of the images given the sample commands given by Professor Trettien.
+For my text extraction process, I used Tesseract's command line interface to analyze all of the images, following the sample commands provided by Professor Trettien. 
+
+The OCR results were mixed: on clear pages, the extraction was fairly accurate, but I noticed frequent misrecognition of the letter "s" as "f," reflecting the 18th-century long-s typography. This was a consistent issue throughout, and automatic correction using regex was only partly successful since some words could legitimately contain either letter—context and spelling had to be checked. To improve accuracy, I experimented by running the OCR output through ChatGPT using a prompt specifically noting the historical "s"/"f" confusion; this yielded better contextual corrections by having the model determine which character made sense for each word.
+
+Overall, I needed to do a fair amount of manual correction—reading line by line and comparing to the images, especially for headings, marginalia, or unusually formatted sections. Fortunately, there were no tables or embedded images in the source material, so I did not need to develop a workflow for extracting that type of media. One limitation of plain txt format was the inability to preserve formatting such as italics or bold, which would be possible if converted to markdown or a richer text format, but I opted to keep the transcription strictly in plain text for transparency and ease of downstream processing.
+
+To summarize, the process involved (1) running Tesseract for initial extraction, (2) identifying and planning for known OCR pitfalls (like the long-s vs. f issue), (3) leveraging both automated and AI-assisted correction, and (4) manual review against the original images. I recommend documenting any persistent errors or edge cases for future users, and considering richer text encoding if markup or formatting details are essential for your edition.
